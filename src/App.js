@@ -62,7 +62,7 @@ function App() {
 
     return (
       <div className='container'>
-        <h1 style={{ width: "100%" }}>Lemonade Stand</h1>
+        <h1 style={{ width: "100%" }}><img src='/Lemoned_Learge.png' alt='Lemoned_Learge' style={{height: "124px"}}/></h1>
         <div className='tableContainer'>
           <div style={{ width: "70%", textAlign: "center", paddingLeft: "10%" }}>
             <LemonadeTable setTotalAmount={setTotalAmount} />
