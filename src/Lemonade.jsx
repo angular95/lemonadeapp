@@ -18,13 +18,7 @@ const [items, setItems] = useState([]);
                 setItems(updatedItems);
             })
             .catch((error) => {
-                console.error("Error fetching data:", error)
-               const updatedItems1 = tableArray.map((item) => ({
-                    ...item,
-                    quantity: 0,
-                    total: 0
-                }));
-                setItems(updatedItems1);
+                console.error("Error fetching data:", error)               
             });
     }, []);
 
