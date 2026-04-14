@@ -4,7 +4,7 @@ const OrderTable = ({ totalAmount, setShowModal }) => {
     return (
         <>
             <div>
-                Total {total}
+                Total ${total}
             </div>
             <div  className="orderNow">
                 <span  style={{
