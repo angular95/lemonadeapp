@@ -1,20 +1,44 @@
-import React, { useState } from "react";
-import tableArray from "./constent";
+import React, { useEffect, useState } from "react";
+ import tableArray from "./constent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faLemon } from "@fortawesome/free-solid-svg-icons";
 
+const LemonadeTable = ({setTotalAmount}) => {
+const [items, setItems] = useState([]);
+    useEffect(() => {
+        fetch("https://localhost:7209/api/Lemonade")
+            .then((response) => response.json())
+            .then((data) => {
+                const updatedItems = data.map((item) => ({
+                    ...item,
+                    quantity: 0,
+                    total: 0
+                }));
+                setItems(updatedItems);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error)
+               const updatedItems1 = tableArray.map((item) => ({
+                    ...item,
+                    quantity: 0,
+                    total: 0
+                }));
+                setItems(updatedItems1);
+            });
+    }, []);
 
-const LemonadeTable = () => {
     // initialize state with constantData
-    const [items, setItems] = useState(
-        tableArray.map((item) => ({ ...item, quantity: 0 }))
-    );
+    // const [items, setItems] = useState(
+    //     tableArray.map((item) => ({ ...item, quantity: 0 }))
+    // );
 
     const increaseQuantity = (index) => {
         const updated = [...items];
         updated[index].quantity += 1;
         updated[index].total = updated[index].price * updated[index].quantity;
+        const totalAmount = updated.reduce((sum, item) => sum + item.total, 0);
+        setTotalAmount(totalAmount);
         setItems(updated);
     };
 
@@ -23,6 +47,8 @@ const LemonadeTable = () => {
         if (updated[index].quantity > 0) {
             updated[index].quantity -= 1;
             updated[index].total = updated[index].price * updated[index].quantity;
+            const totalAmount = updated.reduce((sum, item) => sum + item.total, 0);
+            setTotalAmount(totalAmount);
             setItems(updated);
         }
     };
@@ -31,7 +57,6 @@ const LemonadeTable = () => {
     const updated = items.filter((_, i) => i !== index);
     setItems(updated);
   };
-
 
 
     return (
@@ -88,7 +113,6 @@ const LemonadeTable = () => {
                             >
                                 <FontAwesomeIcon icon={faTrash} />
                             </button>
-
 
                         </td>
                     </tr>
