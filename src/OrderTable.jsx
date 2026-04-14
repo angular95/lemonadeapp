@@ -1,24 +1,18 @@
-const OrderTable = () => {
-    const total = "$5";
-       const deleteItem = () => {
-    
-  };
+const OrderTable = ({ totalAmount, setShowModal }) => {
+    const total = totalAmount.toFixed(2);
+       
     return (
         <>
             <div>
                 Total {total}
             </div>
-            <div>
-                <button
-                    onClick={() => deleteItem()}
-                    style={{
-                        background: "transparent",
-                        border: "none",
+            <div  className="orderNow">
+                <span  style={{
                         cursor: "pointer",
-                        fontSize: "18px",
-                        color: "red"
-                    }}
-                >deee</button>
+                        fontSize: "14px",
+                        color: "white"
+                    }} onClick={() => setShowModal(true)}>Order Now</span>
+                
             </div>
         </>
     )
