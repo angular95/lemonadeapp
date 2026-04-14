@@ -32,4 +32,5 @@
       total:0
     }
 ];
+
 export default tableArray;
