@@ -85,7 +85,7 @@ const [items, setItems] = useState([]);
                         <td style={{ textAlign: "left" }}>
                             {item.name}
                             <br />
-                            <span>{item.nametype}</span>
+                            <span style={{fontsize: "smaller", color: "gray"}}>{item.nametype}</span>
                         </td>
                         <td>{item.price}</td>
                         <td>
